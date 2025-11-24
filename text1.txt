@@ -1,1 +1,237 @@
-created text1.txt
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #13171d, #1f2430, #2a3142);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 50px;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 20;
+        }
+
+        nav a {
+            margin-left: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* GLASS CARD */
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+        }
+
+        /* HERO */
+        .hero {
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero .glass {
+            width: 80%;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            opacity: 0.8;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        /* SKILLS */
+        .skills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .skill {
+            width: 220px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .skill:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px #ffc75f;
+        }
+
+        /* PROJECTS */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ffa94d;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            margin-top: 60px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1s;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2>My Portfolio</h2>
+    <div>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="glass">
+        <h1>Your Name</h1>
+        <p>Web Developer • Designer • Creative Builder</p>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section hidden">
+    <h2>About Me</h2>
+    <div class="glass" style="text-align:center;">
+        <p style="font-size:1.2rem;">
+            I am a passionate developer specializing in modern UI, animations, and interactive web experiences.
+        </p>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section hidden">
+    <h2>Skills</h2>
+    <div class="skills">
+        <div class="skill glass">HTML / CSS</div>
+        <div class="skill glass">JavaScript</div>
+        <div class="skill glass">React</div>
+        <div class="skill glass">UI/UX Design</div>
+        <div class="skill glass">Backend</div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section hidden">
+    <h2>Projects</h2>
+    <div class="projects">
+        <div class="project glass">Project 1 – Website UI</div>
+        <div class="project glass">Project 2 – Mobile App</div>
+        <div class="project glass">Project 3 – Dashboard</div>
+        <div class="project glass">Project 4 – E-commerce UI</div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section hidden">
+    <h2>Contact</h2>
+    <div class="glass contact">
+        📧 Email: yourname@example.com <br><br>
+        📱 Phone: +123 456 7890 <br><br>
+        📍 Location: Your City
+    </div>
+</section>
+
+<footer>
+    © 2025 My Portfolio — All Rights Reserved
+</footer>
+
+<script>
+    const hiddenElements = document.querySelectorAll('.hidden');
+
+    const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add('show');
+            }
+        });
+    });
+
+    hiddenElements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
